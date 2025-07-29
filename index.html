@@ -3,50 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Performance optimizations -->
+  <meta name="description" content="Car gallery with interactive sliding cards" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Preload critical JavaScript -->
+  <link rel="preload" href="app.js" as="script" />
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  
   <title>Карточки | Проект 1</title>
 </head>
 <body>
 <div class="container">
   <div
       class="slide"
-      style="background-image: url('https://images.unsplash.com/photo-1576289668060-47fd82c89bb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');"
+      data-bg="https://images.unsplash.com/photo-1576289668060-47fd82c89bb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75"
   >
     <h3>Porsche</h3>
   </div>
   <div
       class="slide"
-      style="
-          background-image: url('https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-        "
+      data-bg="https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75"
   >
     <h3>Lamborghini</h3>
   </div>
   <div
       class="slide"
-      style="
-          background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1694&q=80');
-        "
+      data-bg="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75"
   >
     <h3>Camaro</h3>
   </div>
   <div
       class="slide active"
-      style="
-          background-image: url('https://images.unsplash.com/photo-1565793979206-10951493332d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');
-        "
+      data-bg="https://images.unsplash.com/photo-1565793979206-10951493332d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75"
+      style="background-image: url('https://images.unsplash.com/photo-1565793979206-10951493332d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75');"
   >
     <h3>Aston</h3>
   </div>
   <div
       class="slide"
-      style="
-          background-image: url('https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
-        "
+      data-bg="https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=75"
   >
     <h3>Tesla</h3>
   </div>
 </div>
-<script src="app.js"></script>
+
+<!-- Load JavaScript at the end for better performance -->
+<script src="app.js" defer></script>
+
+<!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+</script>
 </body>
 </html>

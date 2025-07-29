@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Performance optimizations -->
+  <meta name="description" content="Car gallery with interactive sliding cards - optimized for performance" />
+  <meta name="theme-color" content="#0c0404" />
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  
+  <!-- Critical CSS inlined for fastest loading -->
+  <style>
+    *{box-sizing:border-box}body{font-family:'Muli',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow:hidden;margin:0;background:rgb(12,4,4);height:100vh;display:flex;justify-content:center;align-items:center}.container{width:100%;display:flex;padding:0 20px}.slide{height:80vh;border-radius:20px;margin:10px;cursor:pointer;color:white;flex:1;background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;transition:flex 500ms ease-in-out;will-change:flex;background-color:#333}.slide h3{position:absolute;font-size:24px;bottom:20px;left:20px;margin:0;opacity:0;transition:opacity .3s ease-in .4s;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.slide.active{flex:10}.slide.active h3{opacity:1}.slide.loading{background-color:#444;background-image:linear-gradient(90deg,#444 25%,#555 50%,#444 75%);background-size:200% 100%;animation:loading 1.5s infinite}@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  </style>
+  
+  <!-- Load Google Fonts asynchronously -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Muli:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@400&display=swap"></noscript>
+  
+  <!-- Preload JavaScript -->
+  <link rel="preload" href="app.min.js" as="script" />
+  
+  <title>Карточки | Проект 1</title>
+</head>
+<body>
+<div class="container">
+  <div
+      class="slide"
+      data-bg="https://images.unsplash.com/photo-1576289668060-47fd82c89bb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75&fm=webp"
+  >
+    <h3>Porsche</h3>
+  </div>
+  <div
+      class="slide"
+      data-bg="https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75&fm=webp"
+  >
+    <h3>Lamborghini</h3>
+  </div>
+  <div
+      class="slide"
+      data-bg="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75&fm=webp"
+  >
+    <h3>Camaro</h3>
+  </div>
+  <div
+      class="slide active"
+      data-bg="https://images.unsplash.com/photo-1565793979206-10951493332d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75&fm=webp"
+      style="background-image: url('https://images.unsplash.com/photo-1565793979206-10951493332d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=75&fm=webp');"
+  >
+    <h3>Aston</h3>
+  </div>
+  <div
+      class="slide"
+      data-bg="https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=75&fm=webp"
+  >
+    <h3>Tesla</h3>
+  </div>
+</div>
+
+<!-- Load minified JavaScript with defer for optimal performance -->
+<script src="app.min.js" defer></script>
+</body>
+</html>
